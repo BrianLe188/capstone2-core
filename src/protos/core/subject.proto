@@ -1,0 +1,31 @@
+syntax = 'proto3';
+
+package subject;
+
+message Subject {
+  optional string id = 1;
+  string name = 2;
+}
+
+message Subjects {
+  repeated Subject data = 1;
+}
+
+message UpdateSubject {
+  string id = 1;
+  Subject body = 2;
+}
+
+message SubjectResponse {
+  oneof response {
+    Subject subject = 1;
+    string error = 2;
+  }
+}
+
+message SubjectsResponse {
+  oneof response {
+    Subjects subjects = 1;
+    string error = 2;
+  }
+}
