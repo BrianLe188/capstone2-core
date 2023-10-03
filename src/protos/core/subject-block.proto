@@ -2,13 +2,22 @@ syntax = 'proto3';
 
 package subject_block;
 
+import './subject.proto';
+
 message SubjectBlock {
   optional string id = 1;
   string name = 2;
+  repeated string subjects = 3;
+}
+
+message SubjectBlockWithSubjects {
+  optional string id = 1;
+  string name = 2;
+  repeated subject.Subject subjects = 3;
 }
 
 message SubjectBlocks {
-  repeated SubjectBlock data = 1;
+  repeated SubjectBlockWithSubjects data = 1;
 }
 
 message UpdateSubjectBlock {

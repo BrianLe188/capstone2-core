@@ -48,6 +48,7 @@ export interface ProtoGrpcType {
   subject_block: {
     SubjectBlock: MessageTypeDefinition
     SubjectBlockResponse: MessageTypeDefinition
+    SubjectBlockWithSubjects: MessageTypeDefinition
     SubjectBlocks: MessageTypeDefinition
     SubjectBlocksResponse: MessageTypeDefinition
     UpdateSubjectBlock: MessageTypeDefinition

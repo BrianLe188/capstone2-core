@@ -1,7 +1,10 @@
 import { CoreDB } from "../../data-source";
+import { Subject } from "../subjects/subjects.entity";
 import { SubjectBlock } from "./subject-blocks.entity";
+import { In } from "typeorm";
 
 const subjectBlockRepo = CoreDB.getRepository(SubjectBlock);
+const subjectRepo = CoreDB.getRepository(Subject);
 
 const ImportSubjectBlock = async (call: any, callback: any) => {
   try {
@@ -22,7 +25,11 @@ const ImportSubjectBlock = async (call: any, callback: any) => {
 
 const GetAllSubjectBlock = async (call: any, callback: any) => {
   try {
-    const subject_blocks = await subjectBlockRepo.find();
+    const subject_blocks = await subjectBlockRepo.find({
+      relations: {
+        subjects: true,
+      },
+    });
     callback(null, {
       blocks: {
         data: subject_blocks,
@@ -34,9 +41,17 @@ const GetAllSubjectBlock = async (call: any, callback: any) => {
 const CreateSubjectBlock = async (call: any, callback: any) => {
   try {
     const subject_block: any = new SubjectBlock();
-    Object.keys(call.request).forEach((item) => {
+    const { subjects, ...rest } = call.request;
+    Object.keys(rest).forEach((item) => {
       subject_block[item] = call.request[item];
     });
+    if (Array.isArray(subjects) && subjects.length > 0) {
+      subject_block.subjects = await subjectRepo.find({
+        where: {
+          id: In(subjects),
+        },
+      });
+    }
     await subjectBlockRepo.save(subject_block);
     callback(null, { block: subject_block });
   } catch (error) {}
@@ -45,13 +60,24 @@ const CreateSubjectBlock = async (call: any, callback: any) => {
 const UpdateSubjectBlock = async (call: any, callback: any) => {
   try {
     const { id, body } = call.request;
-    const updatedSubjectBlock: any = await subjectBlockRepo.findOneBy({
-      id,
+    const { subjects, ...rest } = body;
+    const updatedSubjectBlock: any = await subjectBlockRepo.findOne({
+      where: {
+        id,
+      },
     });
     if (updatedSubjectBlock) {
-      Object.keys(body).forEach((item) => {
+      Object.keys(rest).forEach((item) => {
         updatedSubjectBlock[item] = body[item];
       });
+      if (Array.isArray(subjects) && subjects.length > 0) {
+        console.log(subjects);
+        updatedSubjectBlock.subjects = await subjectRepo.find({
+          where: {
+            id: In([...subjects]),
+          },
+        });
+      }
       await subjectBlockRepo.save(updatedSubjectBlock);
       callback(null, { block: updatedSubjectBlock });
     } else {
