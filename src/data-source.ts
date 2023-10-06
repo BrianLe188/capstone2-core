@@ -4,6 +4,7 @@ import { MemberSchool } from "./services/member-schools/member-schools.entity";
 import { Majors } from "./services/majors/majors.entity";
 import { Subject } from "./services/subjects/subjects.entity";
 import { SubjectBlock } from "./services/subject-blocks/subject-blocks.entity";
+import { Files } from "./services/files/files.entity";
 
 export const CoreDB = new DataSource({
   type: process.env.DB_TYPE,
@@ -14,7 +15,7 @@ export const CoreDB = new DataSource({
   database: process.env.DB_NAME,
   synchronize: true,
   logging: true,
-  entities: [Module, MemberSchool, Majors, Subject, SubjectBlock],
+  entities: [Module, MemberSchool, Majors, Subject, SubjectBlock, Files],
   subscribers: [],
   migrations: [],
 } as DataSourceOptions);

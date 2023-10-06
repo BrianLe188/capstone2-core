@@ -17,6 +17,13 @@ export interface ProtoGrpcType {
     Strings: MessageTypeDefinition
     Target: MessageTypeDefinition
   }
+  file: {
+    File: MessageTypeDefinition
+    FileResponse: MessageTypeDefinition
+    Files: MessageTypeDefinition
+    FilesResponse: MessageTypeDefinition
+    UpdateFile: MessageTypeDefinition
+  }
   majors: {
     Majors: MessageTypeDefinition
     MajorsResponse: MessageTypeDefinition

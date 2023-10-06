@@ -16,6 +16,7 @@ import memberSchoolRPC from "./services/member-schools/member-schools.rpc";
 import majorsRPC from "./services/majors/majors.rpc";
 import subjectRPC from "./services/subjects/subjects.rpc";
 import subjectBlockRPC from "./services/subject-blocks/subject-blocks.rpc";
+import fileRPC from "./services/files/files.rpc";
 
 const packageDefinition = loadSync(PROTO_PATH);
 
@@ -32,6 +33,7 @@ function main() {
     ...majorsRPC,
     ...subjectRPC,
     ...subjectBlockRPC,
+    ...fileRPC,
   });
   if (process.env.CORE_GRPC) {
     server.bindAsync(

@@ -2,6 +2,9 @@
 
 import type * as grpc from '@grpc/grpc-js'
 import type { MethodDefinition } from '@grpc/proto-loader'
+import type { File as _file_File, File__Output as _file_File__Output } from '../file/File';
+import type { FileResponse as _file_FileResponse, FileResponse__Output as _file_FileResponse__Output } from '../file/FileResponse';
+import type { FilesResponse as _file_FilesResponse, FilesResponse__Output as _file_FilesResponse__Output } from '../file/FilesResponse';
 import type { GreetRequest as _core_GreetRequest, GreetRequest__Output as _core_GreetRequest__Output } from '../core/GreetRequest';
 import type { GreetResponse as _core_GreetResponse, GreetResponse__Output as _core_GreetResponse__Output } from '../core/GreetResponse';
 import type { Majors as _majors_Majors, Majors__Output as _majors_Majors__Output } from '../majors/Majors';
@@ -23,6 +26,7 @@ import type { SubjectBlocksResponse as _subject_block_SubjectBlocksResponse, Sub
 import type { SubjectResponse as _subject_SubjectResponse, SubjectResponse__Output as _subject_SubjectResponse__Output } from '../subject/SubjectResponse';
 import type { SubjectsResponse as _subject_SubjectsResponse, SubjectsResponse__Output as _subject_SubjectsResponse__Output } from '../subject/SubjectsResponse';
 import type { Target as _core_Target, Target__Output as _core_Target__Output } from '../core/Target';
+import type { UpdateFile as _file_UpdateFile, UpdateFile__Output as _file_UpdateFile__Output } from '../file/UpdateFile';
 import type { UpdateMajors as _majors_UpdateMajors, UpdateMajors__Output as _majors_UpdateMajors__Output } from '../majors/UpdateMajors';
 import type { UpdateMemberSchool as _member_school_UpdateMemberSchool, UpdateMemberSchool__Output as _member_school_UpdateMemberSchool__Output } from '../member_school/UpdateMemberSchool';
 import type { UpdateModule as _module_UpdateModule, UpdateModule__Output as _module_UpdateModule__Output } from '../module/UpdateModule';
@@ -30,6 +34,15 @@ import type { UpdateSubject as _subject_UpdateSubject, UpdateSubject__Output as 
 import type { UpdateSubjectBlock as _subject_block_UpdateSubjectBlock, UpdateSubjectBlock__Output as _subject_block_UpdateSubjectBlock__Output } from '../subject_block/UpdateSubjectBlock';
 
 export interface CoreClient extends grpc.Client {
+  CreateFile(argument: _file_File, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_file_FileResponse__Output>): grpc.ClientUnaryCall;
+  CreateFile(argument: _file_File, metadata: grpc.Metadata, callback: grpc.requestCallback<_file_FileResponse__Output>): grpc.ClientUnaryCall;
+  CreateFile(argument: _file_File, options: grpc.CallOptions, callback: grpc.requestCallback<_file_FileResponse__Output>): grpc.ClientUnaryCall;
+  CreateFile(argument: _file_File, callback: grpc.requestCallback<_file_FileResponse__Output>): grpc.ClientUnaryCall;
+  createFile(argument: _file_File, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_file_FileResponse__Output>): grpc.ClientUnaryCall;
+  createFile(argument: _file_File, metadata: grpc.Metadata, callback: grpc.requestCallback<_file_FileResponse__Output>): grpc.ClientUnaryCall;
+  createFile(argument: _file_File, options: grpc.CallOptions, callback: grpc.requestCallback<_file_FileResponse__Output>): grpc.ClientUnaryCall;
+  createFile(argument: _file_File, callback: grpc.requestCallback<_file_FileResponse__Output>): grpc.ClientUnaryCall;
+  
   CreateMajor(argument: _majors_Majors, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_majors_MajorsResponse__Output>): grpc.ClientUnaryCall;
   CreateMajor(argument: _majors_Majors, metadata: grpc.Metadata, callback: grpc.requestCallback<_majors_MajorsResponse__Output>): grpc.ClientUnaryCall;
   CreateMajor(argument: _majors_Majors, options: grpc.CallOptions, callback: grpc.requestCallback<_majors_MajorsResponse__Output>): grpc.ClientUnaryCall;
@@ -84,6 +97,15 @@ export interface CoreClient extends grpc.Client {
   default(argument: _core_GreetRequest, options: grpc.CallOptions, callback: grpc.requestCallback<_core_GreetResponse__Output>): grpc.ClientUnaryCall;
   default(argument: _core_GreetRequest, callback: grpc.requestCallback<_core_GreetResponse__Output>): grpc.ClientUnaryCall;
   
+  DeleteFile(argument: _core_Target, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_core_Message__Output>): grpc.ClientUnaryCall;
+  DeleteFile(argument: _core_Target, metadata: grpc.Metadata, callback: grpc.requestCallback<_core_Message__Output>): grpc.ClientUnaryCall;
+  DeleteFile(argument: _core_Target, options: grpc.CallOptions, callback: grpc.requestCallback<_core_Message__Output>): grpc.ClientUnaryCall;
+  DeleteFile(argument: _core_Target, callback: grpc.requestCallback<_core_Message__Output>): grpc.ClientUnaryCall;
+  deleteFile(argument: _core_Target, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_core_Message__Output>): grpc.ClientUnaryCall;
+  deleteFile(argument: _core_Target, metadata: grpc.Metadata, callback: grpc.requestCallback<_core_Message__Output>): grpc.ClientUnaryCall;
+  deleteFile(argument: _core_Target, options: grpc.CallOptions, callback: grpc.requestCallback<_core_Message__Output>): grpc.ClientUnaryCall;
+  deleteFile(argument: _core_Target, callback: grpc.requestCallback<_core_Message__Output>): grpc.ClientUnaryCall;
+  
   DeleteMajor(argument: _core_Target, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_core_Message__Output>): grpc.ClientUnaryCall;
   DeleteMajor(argument: _core_Target, metadata: grpc.Metadata, callback: grpc.requestCallback<_core_Message__Output>): grpc.ClientUnaryCall;
   DeleteMajor(argument: _core_Target, options: grpc.CallOptions, callback: grpc.requestCallback<_core_Message__Output>): grpc.ClientUnaryCall;
@@ -128,6 +150,15 @@ export interface CoreClient extends grpc.Client {
   deleteSubjectBlock(argument: _core_Target, metadata: grpc.Metadata, callback: grpc.requestCallback<_core_Message__Output>): grpc.ClientUnaryCall;
   deleteSubjectBlock(argument: _core_Target, options: grpc.CallOptions, callback: grpc.requestCallback<_core_Message__Output>): grpc.ClientUnaryCall;
   deleteSubjectBlock(argument: _core_Target, callback: grpc.requestCallback<_core_Message__Output>): grpc.ClientUnaryCall;
+  
+  GetAllFiles(argument: _core_RequestEmpty, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_file_FilesResponse__Output>): grpc.ClientUnaryCall;
+  GetAllFiles(argument: _core_RequestEmpty, metadata: grpc.Metadata, callback: grpc.requestCallback<_file_FilesResponse__Output>): grpc.ClientUnaryCall;
+  GetAllFiles(argument: _core_RequestEmpty, options: grpc.CallOptions, callback: grpc.requestCallback<_file_FilesResponse__Output>): grpc.ClientUnaryCall;
+  GetAllFiles(argument: _core_RequestEmpty, callback: grpc.requestCallback<_file_FilesResponse__Output>): grpc.ClientUnaryCall;
+  getAllFiles(argument: _core_RequestEmpty, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_file_FilesResponse__Output>): grpc.ClientUnaryCall;
+  getAllFiles(argument: _core_RequestEmpty, metadata: grpc.Metadata, callback: grpc.requestCallback<_file_FilesResponse__Output>): grpc.ClientUnaryCall;
+  getAllFiles(argument: _core_RequestEmpty, options: grpc.CallOptions, callback: grpc.requestCallback<_file_FilesResponse__Output>): grpc.ClientUnaryCall;
+  getAllFiles(argument: _core_RequestEmpty, callback: grpc.requestCallback<_file_FilesResponse__Output>): grpc.ClientUnaryCall;
   
   GetAllMajors(argument: _core_RequestEmpty, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_majors_MajorssResponse__Output>): grpc.ClientUnaryCall;
   GetAllMajors(argument: _core_RequestEmpty, metadata: grpc.Metadata, callback: grpc.requestCallback<_majors_MajorssResponse__Output>): grpc.ClientUnaryCall;
@@ -192,6 +223,15 @@ export interface CoreClient extends grpc.Client {
   importSubjectBlock(argument: _core_Strings, options: grpc.CallOptions, callback: grpc.requestCallback<_core_Message__Output>): grpc.ClientUnaryCall;
   importSubjectBlock(argument: _core_Strings, callback: grpc.requestCallback<_core_Message__Output>): grpc.ClientUnaryCall;
   
+  UpdateFile(argument: _file_UpdateFile, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_file_FileResponse__Output>): grpc.ClientUnaryCall;
+  UpdateFile(argument: _file_UpdateFile, metadata: grpc.Metadata, callback: grpc.requestCallback<_file_FileResponse__Output>): grpc.ClientUnaryCall;
+  UpdateFile(argument: _file_UpdateFile, options: grpc.CallOptions, callback: grpc.requestCallback<_file_FileResponse__Output>): grpc.ClientUnaryCall;
+  UpdateFile(argument: _file_UpdateFile, callback: grpc.requestCallback<_file_FileResponse__Output>): grpc.ClientUnaryCall;
+  updateFile(argument: _file_UpdateFile, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_file_FileResponse__Output>): grpc.ClientUnaryCall;
+  updateFile(argument: _file_UpdateFile, metadata: grpc.Metadata, callback: grpc.requestCallback<_file_FileResponse__Output>): grpc.ClientUnaryCall;
+  updateFile(argument: _file_UpdateFile, options: grpc.CallOptions, callback: grpc.requestCallback<_file_FileResponse__Output>): grpc.ClientUnaryCall;
+  updateFile(argument: _file_UpdateFile, callback: grpc.requestCallback<_file_FileResponse__Output>): grpc.ClientUnaryCall;
+  
   UpdateMajor(argument: _majors_UpdateMajors, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_majors_MajorsResponse__Output>): grpc.ClientUnaryCall;
   UpdateMajor(argument: _majors_UpdateMajors, metadata: grpc.Metadata, callback: grpc.requestCallback<_majors_MajorsResponse__Output>): grpc.ClientUnaryCall;
   UpdateMajor(argument: _majors_UpdateMajors, options: grpc.CallOptions, callback: grpc.requestCallback<_majors_MajorsResponse__Output>): grpc.ClientUnaryCall;
@@ -240,6 +280,8 @@ export interface CoreClient extends grpc.Client {
 }
 
 export interface CoreHandlers extends grpc.UntypedServiceImplementation {
+  CreateFile: grpc.handleUnaryCall<_file_File__Output, _file_FileResponse>;
+  
   CreateMajor: grpc.handleUnaryCall<_majors_Majors__Output, _majors_MajorsResponse>;
   
   CreateMemberSchool: grpc.handleUnaryCall<_member_school_MemberSchool__Output, _member_school_MemberSchoolResponse>;
@@ -252,6 +294,8 @@ export interface CoreHandlers extends grpc.UntypedServiceImplementation {
   
   Default: grpc.handleUnaryCall<_core_GreetRequest__Output, _core_GreetResponse>;
   
+  DeleteFile: grpc.handleUnaryCall<_core_Target__Output, _core_Message>;
+  
   DeleteMajor: grpc.handleUnaryCall<_core_Target__Output, _core_Message>;
   
   DeleteMemberSchool: grpc.handleUnaryCall<_core_Target__Output, _core_Message>;
@@ -261,6 +305,8 @@ export interface CoreHandlers extends grpc.UntypedServiceImplementation {
   DeleteSubject: grpc.handleUnaryCall<_core_Target__Output, _core_Message>;
   
   DeleteSubjectBlock: grpc.handleUnaryCall<_core_Target__Output, _core_Message>;
+  
+  GetAllFiles: grpc.handleUnaryCall<_core_RequestEmpty__Output, _file_FilesResponse>;
   
   GetAllMajors: grpc.handleUnaryCall<_core_RequestEmpty__Output, _majors_MajorssResponse>;
   
@@ -276,6 +322,8 @@ export interface CoreHandlers extends grpc.UntypedServiceImplementation {
   
   ImportSubjectBlock: grpc.handleUnaryCall<_core_Strings__Output, _core_Message>;
   
+  UpdateFile: grpc.handleUnaryCall<_file_UpdateFile__Output, _file_FileResponse>;
+  
   UpdateMajor: grpc.handleUnaryCall<_majors_UpdateMajors__Output, _majors_MajorsResponse>;
   
   UpdateMemberSchool: grpc.handleUnaryCall<_member_school_UpdateMemberSchool__Output, _member_school_MemberSchoolResponse>;
@@ -289,17 +337,20 @@ export interface CoreHandlers extends grpc.UntypedServiceImplementation {
 }
 
 export interface CoreDefinition extends grpc.ServiceDefinition {
+  CreateFile: MethodDefinition<_file_File, _file_FileResponse, _file_File__Output, _file_FileResponse__Output>
   CreateMajor: MethodDefinition<_majors_Majors, _majors_MajorsResponse, _majors_Majors__Output, _majors_MajorsResponse__Output>
   CreateMemberSchool: MethodDefinition<_member_school_MemberSchool, _member_school_MemberSchoolResponse, _member_school_MemberSchool__Output, _member_school_MemberSchoolResponse__Output>
   CreateModule: MethodDefinition<_module_Module, _module_ModuleResponse, _module_Module__Output, _module_ModuleResponse__Output>
   CreateSubject: MethodDefinition<_subject_Subject, _subject_SubjectResponse, _subject_Subject__Output, _subject_SubjectResponse__Output>
   CreateSubjectBlock: MethodDefinition<_subject_block_SubjectBlock, _subject_block_SubjectBlockResponse, _subject_block_SubjectBlock__Output, _subject_block_SubjectBlockResponse__Output>
   Default: MethodDefinition<_core_GreetRequest, _core_GreetResponse, _core_GreetRequest__Output, _core_GreetResponse__Output>
+  DeleteFile: MethodDefinition<_core_Target, _core_Message, _core_Target__Output, _core_Message__Output>
   DeleteMajor: MethodDefinition<_core_Target, _core_Message, _core_Target__Output, _core_Message__Output>
   DeleteMemberSchool: MethodDefinition<_core_Target, _core_Message, _core_Target__Output, _core_Message__Output>
   DeleteModule: MethodDefinition<_core_Target, _core_Message, _core_Target__Output, _core_Message__Output>
   DeleteSubject: MethodDefinition<_core_Target, _core_Message, _core_Target__Output, _core_Message__Output>
   DeleteSubjectBlock: MethodDefinition<_core_Target, _core_Message, _core_Target__Output, _core_Message__Output>
+  GetAllFiles: MethodDefinition<_core_RequestEmpty, _file_FilesResponse, _core_RequestEmpty__Output, _file_FilesResponse__Output>
   GetAllMajors: MethodDefinition<_core_RequestEmpty, _majors_MajorssResponse, _core_RequestEmpty__Output, _majors_MajorssResponse__Output>
   GetAllMemberSchool: MethodDefinition<_core_RequestEmpty, _member_school_MemberSchoolsResponse, _core_RequestEmpty__Output, _member_school_MemberSchoolsResponse__Output>
   GetAllModule: MethodDefinition<_core_RequestEmpty, _module_ModulesResponse, _core_RequestEmpty__Output, _module_ModulesResponse__Output>
@@ -307,6 +358,7 @@ export interface CoreDefinition extends grpc.ServiceDefinition {
   GetAllSubjectBlock: MethodDefinition<_core_RequestEmpty, _subject_block_SubjectBlocksResponse, _core_RequestEmpty__Output, _subject_block_SubjectBlocksResponse__Output>
   ImportSubject: MethodDefinition<_core_Strings, _core_Message, _core_Strings__Output, _core_Message__Output>
   ImportSubjectBlock: MethodDefinition<_core_Strings, _core_Message, _core_Strings__Output, _core_Message__Output>
+  UpdateFile: MethodDefinition<_file_UpdateFile, _file_FileResponse, _file_UpdateFile__Output, _file_FileResponse__Output>
   UpdateMajor: MethodDefinition<_majors_UpdateMajors, _majors_MajorsResponse, _majors_UpdateMajors__Output, _majors_MajorsResponse__Output>
   UpdateMemberSchool: MethodDefinition<_member_school_UpdateMemberSchool, _member_school_MemberSchoolResponse, _member_school_UpdateMemberSchool__Output, _member_school_MemberSchoolResponse__Output>
   UpdateModule: MethodDefinition<_module_UpdateModule, _module_ModuleResponse, _module_UpdateModule__Output, _module_ModuleResponse__Output>

@@ -1,0 +1,33 @@
+syntax = 'proto3';
+
+package file;
+
+message File {
+  optional string id = 1;
+  string name = 2;
+  string extension = 3;
+  string path = 4;
+}
+
+message Files {
+  repeated File files = 1;
+}
+
+message UpdateFile {
+  string id = 1;
+  File body = 2;
+}
+
+message FileResponse {
+  oneof response {
+    File file = 1;
+    string error = 2;
+  }
+}
+
+message FilesResponse {
+  oneof response {
+    Files files = 1;
+    string error = 2;
+  }
+}

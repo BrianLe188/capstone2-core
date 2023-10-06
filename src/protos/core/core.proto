@@ -7,6 +7,7 @@ import './member-school.proto';
 import './majors.proto';
 import './subject.proto';
 import './subject-block.proto';
+import './file.proto';
 
 service Core {
   rpc Default(GreetRequest) returns (GreetResponse) {}
@@ -37,6 +38,11 @@ service Core {
   rpc DeleteSubjectBlock(Target) returns (Message) {}
   rpc GetAllSubjectBlock(RequestEmpty) returns (subject_block.SubjectBlocksResponse) {}
   rpc ImportSubjectBlock(Strings) returns (Message) {}
+
+  rpc CreateFile(file.File) returns (file.FileResponse) {}
+  rpc UpdateFile(file.UpdateFile) returns (file.FileResponse) {}
+  rpc DeleteFile(Target) returns (Message) {}
+  rpc GetAllFiles(RequestEmpty) returns (file.FilesResponse) {}
 }
 
 message Target {
