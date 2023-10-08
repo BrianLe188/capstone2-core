@@ -10,7 +10,7 @@ message File {
 }
 
 message Files {
-  repeated File files = 1;
+  repeated File data = 1;
 }
 
 message UpdateFile {

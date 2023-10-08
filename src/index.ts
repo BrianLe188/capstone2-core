@@ -17,6 +17,8 @@ import majorsRPC from "./services/majors/majors.rpc";
 import subjectRPC from "./services/subjects/subjects.rpc";
 import subjectBlockRPC from "./services/subject-blocks/subject-blocks.rpc";
 import fileRPC from "./services/files/files.rpc";
+import amqp from "amqplib";
+import ai from "./queue/ai";
 
 const packageDefinition = loadSync(PROTO_PATH);
 
@@ -24,8 +26,11 @@ const service = loadPackageDefinition(
   packageDefinition
 ) as unknown as ProtoGrpcType;
 
-function main() {
+async function main() {
   const server = new Server();
+  const amqpConnection = await amqp.connect("amqp://127.0.0.1");
+  const channel = await amqpConnection.createChannel();
+
   server.addService(service.core.Core.service, {
     ...defaultService,
     ...moduleRPC,
@@ -40,6 +45,7 @@ function main() {
       process.env.CORE_GRPC,
       ServerCredentials.createInsecure(),
       () => {
+        ai({ channel });
         server.start();
         console.log(`Core is running on ${process.env.CORE_GRPC}`);
         CoreDB.initialize()
