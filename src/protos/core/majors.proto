@@ -12,7 +12,7 @@ message Majors {
 }
 
 message Majorss {
-  repeated Majors majors = 1;
+  repeated Majors data = 1;
 }
 
 message UpdateMajors {
