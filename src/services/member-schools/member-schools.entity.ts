@@ -3,7 +3,7 @@ import { Majors } from "../majors/majors.entity";
 
 @Entity({ name: "member_schools" })
 export class MemberSchool {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn("uuid")
   id: number;
 
   @Column()

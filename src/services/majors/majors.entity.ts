@@ -12,7 +12,7 @@ import { SubjectBlock } from "../subject-blocks/subject-blocks.entity";
 
 @Entity({ name: "majors" })
 export class Majors {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn("uuid")
   id: number;
 
   @Column()
