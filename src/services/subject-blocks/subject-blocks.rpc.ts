@@ -71,7 +71,6 @@ const UpdateSubjectBlock = async (call: any, callback: any) => {
         updatedSubjectBlock[item] = body[item];
       });
       if (Array.isArray(subjects) && subjects.length > 0) {
-        console.log(subjects);
         updatedSubjectBlock.subjects = await subjectRepo.find({
           where: {
             id: In([...subjects]),

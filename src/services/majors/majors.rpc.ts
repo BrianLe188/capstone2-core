@@ -1,11 +1,19 @@
+import { In } from "typeorm";
 import { CoreDB } from "../../data-source";
+import { SubjectBlock } from "../subject-blocks/subject-blocks.entity";
 import { Majors } from "./majors.entity";
 
 const majorsRepo = CoreDB.getRepository(Majors);
+const subjectBlockRepo = CoreDB.getRepository(SubjectBlock);
 
 const GetAllMajors = async (call: any, callback: any) => {
   try {
-    const majors = await majorsRepo.find();
+    const majors = await majorsRepo.find({
+      relations: {
+        basedOnHighSchoolExamResults: true,
+        basedOnHighSchoolTranscripts: true,
+      },
+    });
     callback(null, {
       majors: {
         data: majors,
@@ -17,9 +25,34 @@ const GetAllMajors = async (call: any, callback: any) => {
 const CreateMajor = async (call: any, callback: any) => {
   try {
     const major: any = new Majors();
-    Object.keys(call.request).forEach((item) => {
+    const {
+      basedOnHighSchoolExamResults,
+      basedOnHighSchoolTranscripts,
+      ...rest
+    } = call.request;
+    Object.keys(rest).forEach((item) => {
       major[item] = call.request[item];
     });
+    if (
+      Array.isArray(basedOnHighSchoolExamResults) &&
+      basedOnHighSchoolExamResults.length > 0
+    ) {
+      major.basedOnHighSchoolExamResults = await subjectBlockRepo.find({
+        where: {
+          id: In([...basedOnHighSchoolExamResults]),
+        },
+      });
+    }
+    if (
+      Array.isArray(basedOnHighSchoolTranscripts) &&
+      basedOnHighSchoolTranscripts.length > 0
+    ) {
+      major.basedOnHighSchoolTranscripts = await subjectBlockRepo.find({
+        where: {
+          id: In([...basedOnHighSchoolTranscripts]),
+        },
+      });
+    }
     await majorsRepo.save(major);
     callback(null, { major });
   } catch (error) {}
@@ -28,6 +61,11 @@ const CreateMajor = async (call: any, callback: any) => {
 const UpdateMajor = async (call: any, callback: any) => {
   try {
     const { id, body } = call.request;
+    const {
+      basedOnHighSchoolExamResults,
+      basedOnHighSchoolTranscripts,
+      ...rest
+    } = body;
     const updatedMajor: any = await majorsRepo.findOneBy({
       id,
     });
@@ -35,6 +73,30 @@ const UpdateMajor = async (call: any, callback: any) => {
       Object.keys(body).forEach((item) => {
         updatedMajor[item] = body[item];
       });
+      if (
+        Array.isArray(basedOnHighSchoolExamResults) &&
+        basedOnHighSchoolExamResults.length > 0
+      ) {
+        updatedMajor.basedOnHighSchoolExamResults = await subjectBlockRepo.find(
+          {
+            where: {
+              id: In([...basedOnHighSchoolExamResults]),
+            },
+          }
+        );
+      }
+      if (
+        Array.isArray(basedOnHighSchoolTranscripts) &&
+        basedOnHighSchoolTranscripts.length > 0
+      ) {
+        updatedMajor.basedOnHighSchoolTranscripts = await subjectBlockRepo.find(
+          {
+            where: {
+              id: In([...basedOnHighSchoolTranscripts]),
+            },
+          }
+        );
+      }
       await majorsRepo.save(updatedMajor);
       callback(null, { major: updatedMajor });
     } else {

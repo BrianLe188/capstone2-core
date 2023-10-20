@@ -25,6 +25,7 @@ export interface ProtoGrpcType {
     UpdateFile: MessageTypeDefinition
   }
   majors: {
+    MajorWithSubjectBlocks: MessageTypeDefinition
     Majors: MessageTypeDefinition
     MajorsResponse: MessageTypeDefinition
     Majorss: MessageTypeDefinition

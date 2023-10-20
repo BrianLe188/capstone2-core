@@ -8,6 +8,8 @@ export interface Majors {
   'industryCode'?: (string);
   'specializedCode'?: (string);
   'description'?: (string);
+  'basedOnHighSchoolExamResults'?: (string)[];
+  'basedOnHighSchoolTranscripts'?: (string)[];
   '_id'?: "id";
   '_description'?: "description";
 }
@@ -19,6 +21,8 @@ export interface Majors__Output {
   'industryCode': (string);
   'specializedCode': (string);
   'description'?: (string);
+  'basedOnHighSchoolExamResults': (string)[];
+  'basedOnHighSchoolTranscripts': (string)[];
   '_id': "id";
   '_description': "description";
 }
