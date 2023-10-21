@@ -11,7 +11,7 @@ import { Majors } from "../majors/majors.entity";
 @Entity({ name: "subject_blocks" })
 export class SubjectBlock {
   @PrimaryGeneratedColumn("uuid")
-  id: number;
+  id: string;
 
   @Column({ length: 3 })
   name: string;

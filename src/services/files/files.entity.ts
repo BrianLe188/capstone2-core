@@ -4,7 +4,7 @@ import { FILE_EXTENSION } from "../../utils/enums";
 @Entity({ name: "files" })
 export class Files {
   @PrimaryGeneratedColumn("uuid")
-  id: number;
+  id: string;
 
   @Column()
   name: string;

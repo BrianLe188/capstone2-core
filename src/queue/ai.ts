@@ -15,17 +15,19 @@ const ai = async ({ channel }: { channel: Channel }) => {
     getFileMessageQueue,
     async (msg) => {
       try {
-        const id = Number(msg?.content.toString());
-        const file = await fileRepo.findOne({
-          where: {
-            id,
-          },
-        });
-        if (file) {
-          channel.sendToQueue(
-            returnFileMessageQueue,
-            Buffer.from(JSON.stringify(file))
-          );
+        const id = msg?.content.toString();
+        if (id) {
+          const file = await fileRepo.findOne({
+            where: {
+              id,
+            },
+          });
+          if (file) {
+            channel.sendToQueue(
+              returnFileMessageQueue,
+              Buffer.from(JSON.stringify(file))
+            );
+          }
         }
       } catch (error) {
       } finally {

@@ -4,7 +4,7 @@ import { SubjectBlock } from "../subject-blocks/subject-blocks.entity";
 @Entity({ name: "subjects" })
 export class Subject {
   @PrimaryGeneratedColumn("uuid")
-  id: number;
+  id: string;
 
   @Column()
   name: string;
