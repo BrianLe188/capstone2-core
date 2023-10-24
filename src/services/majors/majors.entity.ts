@@ -26,10 +26,7 @@ export class Majors {
   educationalLevel: EDUCATIONAL_LEVEL;
 
   @Column()
-  industryCode: string;
-
-  @Column()
-  specializedCode: string;
+  code: string;
 
   @Column({ type: "text", nullable: true })
   description: string;

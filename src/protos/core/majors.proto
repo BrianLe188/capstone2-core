@@ -8,22 +8,20 @@ message Majors {
   optional string id = 1;
   string name = 2;
   string educationalLevel = 3;
-  string industryCode = 4;
-  string specializedCode = 5;
-  optional string description = 6;
-  repeated string basedOnHighSchoolExamResults = 7;
-  repeated string basedOnHighSchoolTranscripts = 8;
+  string code = 4;
+  optional string description = 5;
+  repeated string basedOnHighSchoolExamResults = 6;
+  repeated string basedOnHighSchoolTranscripts = 7;
 }
 
 message MajorWithSubjectBlocks {
   optional string id = 1;
   string name = 2;
   string educationalLevel = 3;
-  string industryCode = 4;
-  string specializedCode = 5;
-  optional string description = 6;
-  repeated subject_block.SubjectBlock basedOnHighSchoolExamResults = 7;
-  repeated subject_block.SubjectBlock basedOnHighSchoolTranscripts = 8;
+  string code = 4;
+  optional string description = 5;
+  repeated subject_block.SubjectBlock basedOnHighSchoolExamResults = 6;
+  repeated subject_block.SubjectBlock basedOnHighSchoolTranscripts = 7;
 }
 
 message Majorss {

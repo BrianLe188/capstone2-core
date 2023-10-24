@@ -1,0 +1,40 @@
+syntax = 'proto3';
+
+package sub_major;
+
+message SubMajors {
+  optional string id = 1;
+  string name = 2;
+  string code = 3;
+  optional string description = 4;
+}
+
+message SubMajorWithSubjectBlocks {
+  optional string id = 1;
+  string name = 2;
+  string code = 3;
+  optional string description = 4;
+}
+
+message SubMajorss {
+  repeated SubMajorWithSubjectBlocks data = 1;
+}
+
+message UpdateSubMajors {
+  string id = 1;
+  SubMajors body = 2;
+}
+
+message SubMajorsResponse {
+  oneof response {
+    SubMajors submajor = 1;
+    string error = 2;
+  }
+}
+
+message SubMajorssResponse {
+  oneof response {
+    SubMajorss submajors = 1;
+    string error = 2;
+  }
+}

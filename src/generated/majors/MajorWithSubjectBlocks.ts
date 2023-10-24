@@ -6,8 +6,7 @@ export interface MajorWithSubjectBlocks {
   'id'?: (string);
   'name'?: (string);
   'educationalLevel'?: (string);
-  'industryCode'?: (string);
-  'specializedCode'?: (string);
+  'code'?: (string);
   'description'?: (string);
   'basedOnHighSchoolExamResults'?: (_subject_block_SubjectBlock)[];
   'basedOnHighSchoolTranscripts'?: (_subject_block_SubjectBlock)[];
@@ -19,8 +18,7 @@ export interface MajorWithSubjectBlocks__Output {
   'id'?: (string);
   'name': (string);
   'educationalLevel': (string);
-  'industryCode': (string);
-  'specializedCode': (string);
+  'code': (string);
   'description'?: (string);
   'basedOnHighSchoolExamResults': (_subject_block_SubjectBlock__Output)[];
   'basedOnHighSchoolTranscripts': (_subject_block_SubjectBlock__Output)[];

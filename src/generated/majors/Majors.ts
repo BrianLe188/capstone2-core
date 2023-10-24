@@ -5,8 +5,7 @@ export interface Majors {
   'id'?: (string);
   'name'?: (string);
   'educationalLevel'?: (string);
-  'industryCode'?: (string);
-  'specializedCode'?: (string);
+  'code'?: (string);
   'description'?: (string);
   'basedOnHighSchoolExamResults'?: (string)[];
   'basedOnHighSchoolTranscripts'?: (string)[];
@@ -18,8 +17,7 @@ export interface Majors__Output {
   'id'?: (string);
   'name': (string);
   'educationalLevel': (string);
-  'industryCode': (string);
-  'specializedCode': (string);
+  'code': (string);
   'description'?: (string);
   'basedOnHighSchoolExamResults': (string)[];
   'basedOnHighSchoolTranscripts': (string)[];

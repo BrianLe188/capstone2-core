@@ -8,6 +8,7 @@ import './majors.proto';
 import './subject.proto';
 import './subject-block.proto';
 import './file.proto';
+import './sub-majors.proto';
 
 service Core {
   rpc Default(GreetRequest) returns (GreetResponse) {}
@@ -26,6 +27,7 @@ service Core {
   rpc UpdateMajor(majors.UpdateMajors) returns (majors.MajorsResponse) {}
   rpc DeleteMajor(Target) returns (Message) {}
   rpc GetAllMajors(RequestEmpty) returns (majors.MajorssResponse) {}
+  rpc ImportMajor(majors.Majorss) returns (Message) {}
 
   rpc CreateSubject(subject.Subject) returns (subject.SubjectResponse) {}
   rpc UpdateSubject(subject.UpdateSubject) returns (subject.SubjectResponse) {}
@@ -43,6 +45,12 @@ service Core {
   rpc UpdateFile(file.UpdateFile) returns (file.FileResponse) {}
   rpc DeleteFile(Target) returns (Message) {}
   rpc GetAllFiles(RequestEmpty) returns (file.FilesResponse) {}
+
+  rpc CreateSubMajor(sub_major.SubMajors) returns (sub_major.SubMajorsResponse) {}
+  rpc UpdateSubMajor(sub_major.UpdateSubMajors) returns (sub_major.SubMajorsResponse) {}
+  rpc DeleteSubMajor(Target) returns (Message) {}
+  rpc GetAllSubMajors(RequestEmpty) returns (sub_major.SubMajorssResponse) {}
+  rpc ImportSubMajor(sub_major.SubMajorss) returns (Message) {}
 }
 
 message Target {

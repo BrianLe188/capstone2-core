@@ -6,6 +6,22 @@ import { Majors } from "./majors.entity";
 const majorsRepo = CoreDB.getRepository(Majors);
 const subjectBlockRepo = CoreDB.getRepository(SubjectBlock);
 
+const ImportMajor = async (call: any, callback: any) => {
+  try {
+    const { data } = call.request;
+    Promise.all(
+      data.map(async (item: any) => {
+        const major = new Majors();
+        Object.keys(item).forEach((i) => {
+          major[i as keyof Majors] = item[i];
+        });
+        majorsRepo.save(major);
+      })
+    );
+    callback(null, { mesasge: "Success" });
+  } catch (error) {}
+};
+
 const GetAllMajors = async (call: any, callback: any) => {
   try {
     const majors = await majorsRepo.find({
@@ -122,6 +138,7 @@ const majorsRPC = {
   UpdateMajor,
   DeleteMajor,
   GetAllMajors,
+  ImportMajor,
 };
 
 export default majorsRPC;
