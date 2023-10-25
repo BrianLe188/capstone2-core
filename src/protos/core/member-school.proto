@@ -2,6 +2,8 @@ syntax = 'proto3';
 
 package member_school;
 
+import './majors.proto';
+
 message MemberSchool {
   optional string id = 1;
   string name = 2;
@@ -10,10 +12,22 @@ message MemberSchool {
   bool afterUniversity = 5;
   string thumbnail = 6;
   string logo = 7;
+  repeated string majors = 8;
+}
+
+message MemberSchoolWithMajor {
+  optional string id = 1;
+  string name = 2;
+  string link = 3;
+  bool university = 4;
+  bool afterUniversity = 5;
+  string thumbnail = 6;
+  string logo = 7;
+  repeated majors.Majors majors = 8;
 }
 
 message MemberSchools {
-  repeated MemberSchool data = 1;
+  repeated MemberSchoolWithMajor data = 1;
 }
 
 message UpdateMemberSchool {

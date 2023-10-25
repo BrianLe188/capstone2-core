@@ -1,6 +1,7 @@
 import {
   Column,
   Entity,
+  JoinColumn,
   JoinTable,
   ManyToMany,
   ManyToOne,
@@ -31,8 +32,9 @@ export class Majors {
   @Column({ type: "text", nullable: true })
   description: string;
 
-  @ManyToOne(() => MemberSchool, (member) => member.majors)
-  memberSchool: MemberSchool;
+  @ManyToMany(() => MemberSchool, (member) => member.majors)
+  @JoinTable()
+  memberSchools: MemberSchool[];
 
   @ManyToMany(
     () => SubjectBlock,

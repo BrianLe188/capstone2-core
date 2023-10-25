@@ -1,4 +1,10 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Column,
+  Entity,
+  ManyToMany,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from "typeorm";
 import { Majors } from "../majors/majors.entity";
 
 @Entity({ name: "member_schools" })
@@ -24,6 +30,6 @@ export class MemberSchool {
   @Column({ type: "text", nullable: true })
   logo: string;
 
-  @OneToMany(() => Majors, (major) => major.memberSchool)
+  @ManyToMany(() => Majors, (major) => major.memberSchools)
   majors: Majors[];
 }
