@@ -1,15 +1,15 @@
 import {
   Column,
   Entity,
-  JoinColumn,
   JoinTable,
   ManyToMany,
-  ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from "typeorm";
 import { EDUCATIONAL_LEVEL } from "../../utils/enums";
 import { MemberSchool } from "../member-schools/member-schools.entity";
 import { SubjectBlock } from "../subject-blocks/subject-blocks.entity";
+import { SubMajors } from "../sub-majors/sub-majors.entity";
 
 @Entity({ name: "majors" })
 export class Majors {
@@ -26,7 +26,9 @@ export class Majors {
   })
   educationalLevel: EDUCATIONAL_LEVEL;
 
-  @Column()
+  @Column({
+    unique: true,
+  })
   code: string;
 
   @Column({ type: "text", nullable: true })
@@ -46,4 +48,7 @@ export class Majors {
   @ManyToMany(() => SubjectBlock, (subjectBlock) => subjectBlock)
   @JoinTable()
   basedOnHighSchoolTranscripts: SubjectBlock[];
+
+  @OneToMany(() => SubMajors, (sub) => sub.major)
+  subMajors: SubMajors[];
 }

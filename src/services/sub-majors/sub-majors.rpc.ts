@@ -1,7 +1,9 @@
 import { CoreDB } from "../../data-source";
+import { Majors } from "../majors/majors.entity";
 import { SubMajors } from "./sub-majors.entity";
 
 const subMajorsRepo = CoreDB.getRepository(SubMajors);
+const majorRepo = CoreDB.getRepository(Majors);
 
 const ImportSubMajor = async (call: any, callback: any) => {
   try {
@@ -21,7 +23,11 @@ const ImportSubMajor = async (call: any, callback: any) => {
 
 const GetAllSubMajors = async (call: any, callback: any) => {
   try {
-    const submajors = await subMajorsRepo.find();
+    const submajors = await subMajorsRepo.find({
+      relations: {
+        major: true,
+      },
+    });
     callback(null, {
       submajors: {
         data: submajors,
@@ -33,9 +39,18 @@ const GetAllSubMajors = async (call: any, callback: any) => {
 const CreateSubMajor = async (call: any, callback: any) => {
   try {
     const submajor: any = new SubMajors();
-    Object.keys(call.request).forEach((item) => {
-      submajor[item] = call.request[item];
+    const { majorId, ...rest } = call.request;
+    Object.keys(rest).forEach((item) => {
+      submajor[item] = rest[item];
     });
+    const major = await majorRepo.findOne({
+      where: {
+        id: majorId,
+      },
+    });
+    if (major) {
+      submajor.major = major;
+    }
     await subMajorsRepo.save(submajor);
     callback(null, { submajor });
   } catch (error) {}
@@ -48,9 +63,18 @@ const UpdateSubMajor = async (call: any, callback: any) => {
       id,
     });
     if (updatedSubMajor) {
-      Object.keys(body).forEach((item) => {
-        updatedSubMajor[item] = body[item];
+      const { majorId, ...rest } = body;
+      Object.keys(rest).forEach((item) => {
+        updatedSubMajor[item] = rest[item];
       });
+      const major = await majorRepo.findOne({
+        where: {
+          id: majorId,
+        },
+      });
+      if (major) {
+        updatedSubMajor.major = major;
+      }
       await subMajorsRepo.save(updatedSubMajor);
       callback(null, { submajor: updatedSubMajor });
     } else {

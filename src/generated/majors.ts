@@ -8,12 +8,22 @@ type SubtypeConstructor<Constructor extends new (...args: any) => any, Subtype> 
 
 export interface ProtoGrpcType {
   majors: {
+    MajorCodeAndSubjectBlockCode: MessageTypeDefinition
+    MajorCodeAndSubjectBlockCodes: MessageTypeDefinition
     MajorWithSubjectBlocks: MessageTypeDefinition
     Majors: MessageTypeDefinition
     MajorsResponse: MessageTypeDefinition
     Majorss: MessageTypeDefinition
     MajorssResponse: MessageTypeDefinition
     UpdateMajors: MessageTypeDefinition
+  }
+  sub_major: {
+    SubMajorWithMajor: MessageTypeDefinition
+    SubMajors: MessageTypeDefinition
+    SubMajorsResponse: MessageTypeDefinition
+    SubMajorss: MessageTypeDefinition
+    SubMajorssResponse: MessageTypeDefinition
+    UpdateSubMajors: MessageTypeDefinition
   }
   subject: {
     Subject: MessageTypeDefinition

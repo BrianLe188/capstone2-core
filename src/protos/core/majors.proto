@@ -3,6 +3,7 @@ syntax = 'proto3';
 package majors;
 
 import './subject-block.proto';
+import './sub-majors.proto';
 
 message Majors {
   optional string id = 1;
@@ -22,6 +23,17 @@ message MajorWithSubjectBlocks {
   optional string description = 5;
   repeated subject_block.SubjectBlock basedOnHighSchoolExamResults = 6;
   repeated subject_block.SubjectBlock basedOnHighSchoolTranscripts = 7;
+  repeated sub_major.SubMajors majors = 8;
+}
+
+message MajorCodeAndSubjectBlockCode {
+  string code = 1;
+  string script = 2;
+  string result = 3;
+}
+
+message MajorCodeAndSubjectBlockCodes {
+  repeated MajorCodeAndSubjectBlockCode data = 1;
 }
 
 message Majorss {

@@ -1,4 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from "typeorm";
+import { Majors } from "../majors/majors.entity";
 
 @Entity({ name: "sub_majors" })
 export class SubMajors {
@@ -13,4 +20,8 @@ export class SubMajors {
 
   @Column({ type: "text", nullable: true })
   description: string;
+
+  @ManyToOne(() => Majors, (majors) => majors.subMajors, { nullable: true })
+  @JoinColumn()
+  major: Majors;
 }

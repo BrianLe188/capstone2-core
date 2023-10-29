@@ -6,6 +6,57 @@ import { Majors } from "./majors.entity";
 const majorsRepo = CoreDB.getRepository(Majors);
 const subjectBlockRepo = CoreDB.getRepository(SubjectBlock);
 
+const ImportSubjectBlockIntoMajor = async (call: any, callback: any) => {
+  try {
+    const { data } = call.request;
+    Promise.all(
+      data.map(async (item: any) => {
+        try {
+          const major = await majorsRepo.findOne({
+            where: {
+              code: item?.code,
+            },
+          });
+          const script = item.script.split(",");
+          const result = item.result.split(",");
+          const scripts = (
+            await Promise.all(
+              script.map(
+                async (s: any) =>
+                  await subjectBlockRepo.findOne({
+                    where: {
+                      name: s,
+                    },
+                  })
+              )
+            )
+          ).filter((i) => i);
+          const results = (
+            await Promise.all(
+              result.map(
+                async (s: any) =>
+                  await subjectBlockRepo.findOne({
+                    where: {
+                      name: s,
+                    },
+                  })
+              )
+            )
+          ).filter((i) => i);
+          if (major) {
+            major.basedOnHighSchoolTranscripts = scripts;
+            major.basedOnHighSchoolExamResults = results;
+            await majorsRepo.save(major);
+          }
+        } catch (error) {
+          return null;
+        }
+      })
+    );
+    callback(null, { mesasge: "Success" });
+  } catch (error) {}
+};
+
 const ImportMajor = async (call: any, callback: any) => {
   try {
     const { data } = call.request;
@@ -28,6 +79,7 @@ const GetAllMajors = async (call: any, callback: any) => {
       relations: {
         basedOnHighSchoolExamResults: true,
         basedOnHighSchoolTranscripts: true,
+        subMajors: true,
       },
     });
     callback(null, {
@@ -139,6 +191,7 @@ const majorsRPC = {
   DeleteMajor,
   GetAllMajors,
   ImportMajor,
+  ImportSubjectBlockIntoMajor,
 };
 
 export default majorsRPC;

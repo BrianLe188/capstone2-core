@@ -25,6 +25,8 @@ export interface ProtoGrpcType {
     UpdateFile: MessageTypeDefinition
   }
   majors: {
+    MajorCodeAndSubjectBlockCode: MessageTypeDefinition
+    MajorCodeAndSubjectBlockCodes: MessageTypeDefinition
     MajorWithSubjectBlocks: MessageTypeDefinition
     Majors: MessageTypeDefinition
     MajorsResponse: MessageTypeDefinition
@@ -48,7 +50,7 @@ export interface ProtoGrpcType {
     UpdateModule: MessageTypeDefinition
   }
   sub_major: {
-    SubMajorWithSubjectBlocks: MessageTypeDefinition
+    SubMajorWithMajor: MessageTypeDefinition
     SubMajors: MessageTypeDefinition
     SubMajorsResponse: MessageTypeDefinition
     SubMajorss: MessageTypeDefinition

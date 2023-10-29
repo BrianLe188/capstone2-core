@@ -2,22 +2,27 @@ syntax = 'proto3';
 
 package sub_major;
 
+import './majors.proto';
+
 message SubMajors {
   optional string id = 1;
   string name = 2;
   string code = 3;
   optional string description = 4;
+  optional string majorId = 5;
 }
 
-message SubMajorWithSubjectBlocks {
+message SubMajorWithMajor {
   optional string id = 1;
   string name = 2;
   string code = 3;
   optional string description = 4;
+  optional string majorId = 5;
+  optional majors.Majors major = 6;
 }
 
 message SubMajorss {
-  repeated SubMajorWithSubjectBlocks data = 1;
+  repeated SubMajorWithMajor data = 1;
 }
 
 message UpdateSubMajors {

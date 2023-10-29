@@ -7,6 +7,7 @@ import type { FileResponse as _file_FileResponse, FileResponse__Output as _file_
 import type { FilesResponse as _file_FilesResponse, FilesResponse__Output as _file_FilesResponse__Output } from '../file/FilesResponse';
 import type { GreetRequest as _core_GreetRequest, GreetRequest__Output as _core_GreetRequest__Output } from '../core/GreetRequest';
 import type { GreetResponse as _core_GreetResponse, GreetResponse__Output as _core_GreetResponse__Output } from '../core/GreetResponse';
+import type { MajorCodeAndSubjectBlockCodes as _majors_MajorCodeAndSubjectBlockCodes, MajorCodeAndSubjectBlockCodes__Output as _majors_MajorCodeAndSubjectBlockCodes__Output } from '../majors/MajorCodeAndSubjectBlockCodes';
 import type { Majors as _majors_Majors, Majors__Output as _majors_Majors__Output } from '../majors/Majors';
 import type { MajorsResponse as _majors_MajorsResponse, MajorsResponse__Output as _majors_MajorsResponse__Output } from '../majors/MajorsResponse';
 import type { Majorss as _majors_Majorss, Majorss__Output as _majors_Majorss__Output } from '../majors/Majorss';
@@ -274,6 +275,15 @@ export interface CoreClient extends grpc.Client {
   importSubjectBlock(argument: _core_Strings, options: grpc.CallOptions, callback: grpc.requestCallback<_core_Message__Output>): grpc.ClientUnaryCall;
   importSubjectBlock(argument: _core_Strings, callback: grpc.requestCallback<_core_Message__Output>): grpc.ClientUnaryCall;
   
+  ImportSubjectBlockIntoMajor(argument: _majors_MajorCodeAndSubjectBlockCodes, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_core_Message__Output>): grpc.ClientUnaryCall;
+  ImportSubjectBlockIntoMajor(argument: _majors_MajorCodeAndSubjectBlockCodes, metadata: grpc.Metadata, callback: grpc.requestCallback<_core_Message__Output>): grpc.ClientUnaryCall;
+  ImportSubjectBlockIntoMajor(argument: _majors_MajorCodeAndSubjectBlockCodes, options: grpc.CallOptions, callback: grpc.requestCallback<_core_Message__Output>): grpc.ClientUnaryCall;
+  ImportSubjectBlockIntoMajor(argument: _majors_MajorCodeAndSubjectBlockCodes, callback: grpc.requestCallback<_core_Message__Output>): grpc.ClientUnaryCall;
+  importSubjectBlockIntoMajor(argument: _majors_MajorCodeAndSubjectBlockCodes, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_core_Message__Output>): grpc.ClientUnaryCall;
+  importSubjectBlockIntoMajor(argument: _majors_MajorCodeAndSubjectBlockCodes, metadata: grpc.Metadata, callback: grpc.requestCallback<_core_Message__Output>): grpc.ClientUnaryCall;
+  importSubjectBlockIntoMajor(argument: _majors_MajorCodeAndSubjectBlockCodes, options: grpc.CallOptions, callback: grpc.requestCallback<_core_Message__Output>): grpc.ClientUnaryCall;
+  importSubjectBlockIntoMajor(argument: _majors_MajorCodeAndSubjectBlockCodes, callback: grpc.requestCallback<_core_Message__Output>): grpc.ClientUnaryCall;
+  
   UpdateFile(argument: _file_UpdateFile, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_file_FileResponse__Output>): grpc.ClientUnaryCall;
   UpdateFile(argument: _file_UpdateFile, metadata: grpc.Metadata, callback: grpc.requestCallback<_file_FileResponse__Output>): grpc.ClientUnaryCall;
   UpdateFile(argument: _file_UpdateFile, options: grpc.CallOptions, callback: grpc.requestCallback<_file_FileResponse__Output>): grpc.ClientUnaryCall;
@@ -392,6 +402,8 @@ export interface CoreHandlers extends grpc.UntypedServiceImplementation {
   
   ImportSubjectBlock: grpc.handleUnaryCall<_core_Strings__Output, _core_Message>;
   
+  ImportSubjectBlockIntoMajor: grpc.handleUnaryCall<_majors_MajorCodeAndSubjectBlockCodes__Output, _core_Message>;
+  
   UpdateFile: grpc.handleUnaryCall<_file_UpdateFile__Output, _file_FileResponse>;
   
   UpdateMajor: grpc.handleUnaryCall<_majors_UpdateMajors__Output, _majors_MajorsResponse>;
@@ -435,6 +447,7 @@ export interface CoreDefinition extends grpc.ServiceDefinition {
   ImportSubMajor: MethodDefinition<_sub_major_SubMajorss, _core_Message, _sub_major_SubMajorss__Output, _core_Message__Output>
   ImportSubject: MethodDefinition<_core_Strings, _core_Message, _core_Strings__Output, _core_Message__Output>
   ImportSubjectBlock: MethodDefinition<_core_Strings, _core_Message, _core_Strings__Output, _core_Message__Output>
+  ImportSubjectBlockIntoMajor: MethodDefinition<_majors_MajorCodeAndSubjectBlockCodes, _core_Message, _majors_MajorCodeAndSubjectBlockCodes__Output, _core_Message__Output>
   UpdateFile: MethodDefinition<_file_UpdateFile, _file_FileResponse, _file_UpdateFile__Output, _file_FileResponse__Output>
   UpdateMajor: MethodDefinition<_majors_UpdateMajors, _majors_MajorsResponse, _majors_UpdateMajors__Output, _majors_MajorsResponse__Output>
   UpdateMemberSchool: MethodDefinition<_member_school_UpdateMemberSchool, _member_school_MemberSchoolResponse, _member_school_UpdateMemberSchool__Output, _member_school_MemberSchoolResponse__Output>

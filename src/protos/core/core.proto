@@ -28,6 +28,7 @@ service Core {
   rpc DeleteMajor(Target) returns (Message) {}
   rpc GetAllMajors(RequestEmpty) returns (majors.MajorssResponse) {}
   rpc ImportMajor(majors.Majorss) returns (Message) {}
+  rpc ImportSubjectBlockIntoMajor(majors.MajorCodeAndSubjectBlockCodes) returns (Message) {}
 
   rpc CreateSubject(subject.Subject) returns (subject.SubjectResponse) {}
   rpc UpdateSubject(subject.UpdateSubject) returns (subject.SubjectResponse) {}
