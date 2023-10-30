@@ -9,10 +9,12 @@ export interface SubMajorWithMajor {
   'description'?: (string);
   'majorId'?: (string);
   'major'?: (_majors_Majors | null);
+  'tuition'?: (number);
   '_id'?: "id";
   '_description'?: "description";
   '_majorId'?: "majorId";
   '_major'?: "major";
+  '_tuition'?: "tuition";
 }
 
 export interface SubMajorWithMajor__Output {
@@ -22,8 +24,10 @@ export interface SubMajorWithMajor__Output {
   'description'?: (string);
   'majorId'?: (string);
   'major'?: (_majors_Majors__Output | null);
+  'tuition'?: (number);
   '_id': "id";
   '_description': "description";
   '_majorId': "majorId";
   '_major': "major";
+  '_tuition': "tuition";
 }

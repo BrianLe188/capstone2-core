@@ -7,9 +7,11 @@ export interface SubMajors {
   'code'?: (string);
   'description'?: (string);
   'majorId'?: (string);
+  'tuition'?: (number);
   '_id'?: "id";
   '_description'?: "description";
   '_majorId'?: "majorId";
+  '_tuition'?: "tuition";
 }
 
 export interface SubMajors__Output {
@@ -18,7 +20,9 @@ export interface SubMajors__Output {
   'code': (string);
   'description'?: (string);
   'majorId'?: (string);
+  'tuition'?: (number);
   '_id': "id";
   '_description': "description";
   '_majorId': "majorId";
+  '_tuition': "tuition";
 }

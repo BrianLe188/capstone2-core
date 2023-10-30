@@ -24,4 +24,7 @@ export class SubMajors {
   @ManyToOne(() => Majors, (majors) => majors.subMajors, { nullable: true })
   @JoinColumn()
   major: Majors;
+
+  @Column({ type: "integer" })
+  tuition: number;
 }

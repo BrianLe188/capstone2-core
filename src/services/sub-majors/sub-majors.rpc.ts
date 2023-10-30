@@ -10,7 +10,7 @@ const ImportSubMajor = async (call: any, callback: any) => {
     const { data } = call.request;
     Promise.all(
       data.map(async (item: any) => {
-        const submajor = new SubMajors();
+        const submajor: any = new SubMajors();
         Object.keys(item).forEach((i) => {
           submajor[i as keyof SubMajors] = item[i];
         });

@@ -10,6 +10,7 @@ message SubMajors {
   string code = 3;
   optional string description = 4;
   optional string majorId = 5;
+  optional int32 tuition = 6;
 }
 
 message SubMajorWithMajor {
@@ -19,6 +20,7 @@ message SubMajorWithMajor {
   optional string description = 4;
   optional string majorId = 5;
   optional majors.Majors major = 6;
+  optional int32 tuition = 7;
 }
 
 message SubMajorss {
