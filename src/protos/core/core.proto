@@ -41,6 +41,7 @@ service Core {
   rpc DeleteSubjectBlock(Target) returns (Message) {}
   rpc GetAllSubjectBlock(RequestEmpty) returns (subject_block.SubjectBlocksResponse) {}
   rpc ImportSubjectBlock(Strings) returns (Message) {}
+  rpc ImportSubjectIntoBlock(subject_block.BlockCodeAndSubjects) returns (Message) {}
 
   rpc CreateFile(file.File) returns (file.FileResponse) {}
   rpc UpdateFile(file.UpdateFile) returns (file.FileResponse) {}

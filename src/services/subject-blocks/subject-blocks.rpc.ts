@@ -6,6 +6,35 @@ import { In } from "typeorm";
 const subjectBlockRepo = CoreDB.getRepository(SubjectBlock);
 const subjectRepo = CoreDB.getRepository(Subject);
 
+const ImportSubjectIntoBlock = async (call: any, callback: any) => {
+  try {
+    const { data } = call.request;
+    Promise.all(
+      data.map(async (item: any) => {
+        const name = item.name.trim();
+        const s1 = item.s1.trim();
+        const s2 = item.s2.trim();
+        const s3 = item.s3.trim();
+        const block = await subjectBlockRepo.findOne({
+          where: {
+            name,
+          },
+        });
+        const subjects = await subjectRepo.find({
+          where: {
+            name: In([s1, s2, s3]),
+          },
+        });
+        if (block) {
+          block.subjects = subjects;
+          await subjectBlockRepo.save(block);
+        }
+      })
+    );
+    callback(null, { mesasge: "Success" });
+  } catch (error) {}
+};
+
 const ImportSubjectBlock = async (call: any, callback: any) => {
   try {
     const { data } = call.request;
@@ -103,6 +132,7 @@ const subjectBlockRPC = {
   DeleteSubjectBlock,
   GetAllSubjectBlock,
   ImportSubjectBlock,
+  ImportSubjectIntoBlock,
 };
 
 export default subjectBlockRPC;

@@ -20,6 +20,17 @@ message SubjectBlocks {
   repeated SubjectBlockWithSubjects data = 1;
 }
 
+message BlockCodeAndSubject {
+  string name = 1;
+  string s1 = 2;
+  string s2 = 3;
+  string s3 = 4;
+}
+
+message BlockCodeAndSubjects {
+  repeated BlockCodeAndSubject data = 1;
+}
+
 message UpdateSubjectBlock {
   string id = 1;
   SubjectBlock body = 2;
