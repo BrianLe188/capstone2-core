@@ -10,11 +10,15 @@ export interface SubMajorWithMajor {
   'majorId'?: (string);
   'major'?: (_majors_Majors | null);
   'tuition'?: (number);
+  'cutoffPoint'?: (number | string);
+  'admissionCriteria'?: (number);
   '_id'?: "id";
   '_description'?: "description";
   '_majorId'?: "majorId";
   '_major'?: "major";
   '_tuition'?: "tuition";
+  '_cutoffPoint'?: "cutoffPoint";
+  '_admissionCriteria'?: "admissionCriteria";
 }
 
 export interface SubMajorWithMajor__Output {
@@ -25,9 +29,13 @@ export interface SubMajorWithMajor__Output {
   'majorId'?: (string);
   'major'?: (_majors_Majors__Output | null);
   'tuition'?: (number);
+  'cutoffPoint'?: (number);
+  'admissionCriteria'?: (number);
   '_id': "id";
   '_description': "description";
   '_majorId': "majorId";
   '_major': "major";
   '_tuition': "tuition";
+  '_cutoffPoint': "cutoffPoint";
+  '_admissionCriteria': "admissionCriteria";
 }

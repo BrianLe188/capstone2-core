@@ -27,4 +27,10 @@ export class SubMajors {
 
   @Column({ type: "integer" })
   tuition: number;
+
+  @Column({ type: "float" })
+  cutoffPoint: number;
+
+  @Column({ type: "integer" })
+  admissionCriteria: number;
 }

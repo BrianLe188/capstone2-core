@@ -8,10 +8,14 @@ export interface SubMajors {
   'description'?: (string);
   'majorId'?: (string);
   'tuition'?: (number);
+  'cutoffPoint'?: (number | string);
+  'admissionCriteria'?: (number);
   '_id'?: "id";
   '_description'?: "description";
   '_majorId'?: "majorId";
   '_tuition'?: "tuition";
+  '_cutoffPoint'?: "cutoffPoint";
+  '_admissionCriteria'?: "admissionCriteria";
 }
 
 export interface SubMajors__Output {
@@ -21,8 +25,12 @@ export interface SubMajors__Output {
   'description'?: (string);
   'majorId'?: (string);
   'tuition'?: (number);
+  'cutoffPoint'?: (number);
+  'admissionCriteria'?: (number);
   '_id': "id";
   '_description': "description";
   '_majorId': "majorId";
   '_tuition': "tuition";
+  '_cutoffPoint': "cutoffPoint";
+  '_admissionCriteria': "admissionCriteria";
 }

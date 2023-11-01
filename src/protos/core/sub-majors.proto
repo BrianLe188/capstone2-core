@@ -11,6 +11,8 @@ message SubMajors {
   optional string description = 4;
   optional string majorId = 5;
   optional int32 tuition = 6;
+  optional float cutoffPoint = 7;
+  optional int32 admissionCriteria = 8;
 }
 
 message SubMajorWithMajor {
@@ -21,6 +23,8 @@ message SubMajorWithMajor {
   optional string majorId = 5;
   optional majors.Majors major = 6;
   optional int32 tuition = 7;
+  optional float cutoffPoint = 8;
+  optional int32 admissionCriteria = 9;
 }
 
 message SubMajorss {

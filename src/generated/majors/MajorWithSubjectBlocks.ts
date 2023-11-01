@@ -11,7 +11,7 @@ export interface MajorWithSubjectBlocks {
   'description'?: (string);
   'basedOnHighSchoolExamResults'?: (_subject_block_SubjectBlock)[];
   'basedOnHighSchoolTranscripts'?: (_subject_block_SubjectBlock)[];
-  'majors'?: (_sub_major_SubMajors)[];
+  'subMajors'?: (_sub_major_SubMajors)[];
   '_id'?: "id";
   '_description'?: "description";
 }
@@ -24,7 +24,7 @@ export interface MajorWithSubjectBlocks__Output {
   'description'?: (string);
   'basedOnHighSchoolExamResults': (_subject_block_SubjectBlock__Output)[];
   'basedOnHighSchoolTranscripts': (_subject_block_SubjectBlock__Output)[];
-  'majors': (_sub_major_SubMajors__Output)[];
+  'subMajors': (_sub_major_SubMajors__Output)[];
   '_id': "id";
   '_description': "description";
 }
