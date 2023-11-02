@@ -49,6 +49,13 @@ export interface ProtoGrpcType {
     ModulesResponse: MessageTypeDefinition
     UpdateModule: MessageTypeDefinition
   }
+  rule: {
+    Rule: MessageTypeDefinition
+    RuleResponse: MessageTypeDefinition
+    Rules: MessageTypeDefinition
+    RulesResponse: MessageTypeDefinition
+    UpdateRule: MessageTypeDefinition
+  }
   sub_major: {
     SubMajorWithMajor: MessageTypeDefinition
     SubMajors: MessageTypeDefinition

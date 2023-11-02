@@ -1,0 +1,32 @@
+syntax = 'proto3';
+
+package rule;
+
+message Rule {
+  optional string id = 1;
+  string name = 2;
+  string content = 3;
+}
+
+message Rules {
+  repeated Rule data = 1;
+}
+
+message UpdateRule {
+  string id = 1;
+  Rule body = 2;
+}
+
+message RuleResponse {
+  oneof response {
+    Rule rule = 1;
+    string error = 2;
+  }
+}
+
+message RulesResponse {
+  oneof response {
+    Rules rules = 1;
+    string error = 2;
+  }
+}

@@ -9,6 +9,7 @@ import './subject.proto';
 import './subject-block.proto';
 import './file.proto';
 import './sub-majors.proto';
+import './rule.proto';
 
 service Core {
   rpc Default(GreetRequest) returns (GreetResponse) {}
@@ -53,6 +54,11 @@ service Core {
   rpc DeleteSubMajor(Target) returns (Message) {}
   rpc GetAllSubMajors(RequestEmpty) returns (sub_major.SubMajorssResponse) {}
   rpc ImportSubMajor(sub_major.SubMajorss) returns (Message) {}
+
+  rpc CreateRule(rule.Rule) returns (rule.RuleResponse) {}
+  rpc UpdateRule(rule.UpdateRule) returns (rule.RuleResponse) {}
+  rpc DeleteRule(Target) returns (Message) {}
+  rpc GetAllRule(RequestEmpty) returns (rule.RulesResponse) {}
 }
 
 message Target {

@@ -21,6 +21,9 @@ import type { Module as _module_Module, Module__Output as _module_Module__Output
 import type { ModuleResponse as _module_ModuleResponse, ModuleResponse__Output as _module_ModuleResponse__Output } from '../module/ModuleResponse';
 import type { ModulesResponse as _module_ModulesResponse, ModulesResponse__Output as _module_ModulesResponse__Output } from '../module/ModulesResponse';
 import type { RequestEmpty as _core_RequestEmpty, RequestEmpty__Output as _core_RequestEmpty__Output } from '../core/RequestEmpty';
+import type { Rule as _rule_Rule, Rule__Output as _rule_Rule__Output } from '../rule/Rule';
+import type { RuleResponse as _rule_RuleResponse, RuleResponse__Output as _rule_RuleResponse__Output } from '../rule/RuleResponse';
+import type { RulesResponse as _rule_RulesResponse, RulesResponse__Output as _rule_RulesResponse__Output } from '../rule/RulesResponse';
 import type { Strings as _core_Strings, Strings__Output as _core_Strings__Output } from '../core/Strings';
 import type { SubMajors as _sub_major_SubMajors, SubMajors__Output as _sub_major_SubMajors__Output } from '../sub_major/SubMajors';
 import type { SubMajorsResponse as _sub_major_SubMajorsResponse, SubMajorsResponse__Output as _sub_major_SubMajorsResponse__Output } from '../sub_major/SubMajorsResponse';
@@ -37,6 +40,7 @@ import type { UpdateFile as _file_UpdateFile, UpdateFile__Output as _file_Update
 import type { UpdateMajors as _majors_UpdateMajors, UpdateMajors__Output as _majors_UpdateMajors__Output } from '../majors/UpdateMajors';
 import type { UpdateMemberSchool as _member_school_UpdateMemberSchool, UpdateMemberSchool__Output as _member_school_UpdateMemberSchool__Output } from '../member_school/UpdateMemberSchool';
 import type { UpdateModule as _module_UpdateModule, UpdateModule__Output as _module_UpdateModule__Output } from '../module/UpdateModule';
+import type { UpdateRule as _rule_UpdateRule, UpdateRule__Output as _rule_UpdateRule__Output } from '../rule/UpdateRule';
 import type { UpdateSubMajors as _sub_major_UpdateSubMajors, UpdateSubMajors__Output as _sub_major_UpdateSubMajors__Output } from '../sub_major/UpdateSubMajors';
 import type { UpdateSubject as _subject_UpdateSubject, UpdateSubject__Output as _subject_UpdateSubject__Output } from '../subject/UpdateSubject';
 import type { UpdateSubjectBlock as _subject_block_UpdateSubjectBlock, UpdateSubjectBlock__Output as _subject_block_UpdateSubjectBlock__Output } from '../subject_block/UpdateSubjectBlock';
@@ -77,6 +81,15 @@ export interface CoreClient extends grpc.Client {
   createModule(argument: _module_Module, metadata: grpc.Metadata, callback: grpc.requestCallback<_module_ModuleResponse__Output>): grpc.ClientUnaryCall;
   createModule(argument: _module_Module, options: grpc.CallOptions, callback: grpc.requestCallback<_module_ModuleResponse__Output>): grpc.ClientUnaryCall;
   createModule(argument: _module_Module, callback: grpc.requestCallback<_module_ModuleResponse__Output>): grpc.ClientUnaryCall;
+  
+  CreateRule(argument: _rule_Rule, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_rule_RuleResponse__Output>): grpc.ClientUnaryCall;
+  CreateRule(argument: _rule_Rule, metadata: grpc.Metadata, callback: grpc.requestCallback<_rule_RuleResponse__Output>): grpc.ClientUnaryCall;
+  CreateRule(argument: _rule_Rule, options: grpc.CallOptions, callback: grpc.requestCallback<_rule_RuleResponse__Output>): grpc.ClientUnaryCall;
+  CreateRule(argument: _rule_Rule, callback: grpc.requestCallback<_rule_RuleResponse__Output>): grpc.ClientUnaryCall;
+  createRule(argument: _rule_Rule, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_rule_RuleResponse__Output>): grpc.ClientUnaryCall;
+  createRule(argument: _rule_Rule, metadata: grpc.Metadata, callback: grpc.requestCallback<_rule_RuleResponse__Output>): grpc.ClientUnaryCall;
+  createRule(argument: _rule_Rule, options: grpc.CallOptions, callback: grpc.requestCallback<_rule_RuleResponse__Output>): grpc.ClientUnaryCall;
+  createRule(argument: _rule_Rule, callback: grpc.requestCallback<_rule_RuleResponse__Output>): grpc.ClientUnaryCall;
   
   CreateSubMajor(argument: _sub_major_SubMajors, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_sub_major_SubMajorsResponse__Output>): grpc.ClientUnaryCall;
   CreateSubMajor(argument: _sub_major_SubMajors, metadata: grpc.Metadata, callback: grpc.requestCallback<_sub_major_SubMajorsResponse__Output>): grpc.ClientUnaryCall;
@@ -150,6 +163,15 @@ export interface CoreClient extends grpc.Client {
   deleteModule(argument: _core_Target, options: grpc.CallOptions, callback: grpc.requestCallback<_core_Message__Output>): grpc.ClientUnaryCall;
   deleteModule(argument: _core_Target, callback: grpc.requestCallback<_core_Message__Output>): grpc.ClientUnaryCall;
   
+  DeleteRule(argument: _core_Target, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_core_Message__Output>): grpc.ClientUnaryCall;
+  DeleteRule(argument: _core_Target, metadata: grpc.Metadata, callback: grpc.requestCallback<_core_Message__Output>): grpc.ClientUnaryCall;
+  DeleteRule(argument: _core_Target, options: grpc.CallOptions, callback: grpc.requestCallback<_core_Message__Output>): grpc.ClientUnaryCall;
+  DeleteRule(argument: _core_Target, callback: grpc.requestCallback<_core_Message__Output>): grpc.ClientUnaryCall;
+  deleteRule(argument: _core_Target, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_core_Message__Output>): grpc.ClientUnaryCall;
+  deleteRule(argument: _core_Target, metadata: grpc.Metadata, callback: grpc.requestCallback<_core_Message__Output>): grpc.ClientUnaryCall;
+  deleteRule(argument: _core_Target, options: grpc.CallOptions, callback: grpc.requestCallback<_core_Message__Output>): grpc.ClientUnaryCall;
+  deleteRule(argument: _core_Target, callback: grpc.requestCallback<_core_Message__Output>): grpc.ClientUnaryCall;
+  
   DeleteSubMajor(argument: _core_Target, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_core_Message__Output>): grpc.ClientUnaryCall;
   DeleteSubMajor(argument: _core_Target, metadata: grpc.Metadata, callback: grpc.requestCallback<_core_Message__Output>): grpc.ClientUnaryCall;
   DeleteSubMajor(argument: _core_Target, options: grpc.CallOptions, callback: grpc.requestCallback<_core_Message__Output>): grpc.ClientUnaryCall;
@@ -212,6 +234,15 @@ export interface CoreClient extends grpc.Client {
   getAllModule(argument: _core_RequestEmpty, metadata: grpc.Metadata, callback: grpc.requestCallback<_module_ModulesResponse__Output>): grpc.ClientUnaryCall;
   getAllModule(argument: _core_RequestEmpty, options: grpc.CallOptions, callback: grpc.requestCallback<_module_ModulesResponse__Output>): grpc.ClientUnaryCall;
   getAllModule(argument: _core_RequestEmpty, callback: grpc.requestCallback<_module_ModulesResponse__Output>): grpc.ClientUnaryCall;
+  
+  GetAllRule(argument: _core_RequestEmpty, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_rule_RulesResponse__Output>): grpc.ClientUnaryCall;
+  GetAllRule(argument: _core_RequestEmpty, metadata: grpc.Metadata, callback: grpc.requestCallback<_rule_RulesResponse__Output>): grpc.ClientUnaryCall;
+  GetAllRule(argument: _core_RequestEmpty, options: grpc.CallOptions, callback: grpc.requestCallback<_rule_RulesResponse__Output>): grpc.ClientUnaryCall;
+  GetAllRule(argument: _core_RequestEmpty, callback: grpc.requestCallback<_rule_RulesResponse__Output>): grpc.ClientUnaryCall;
+  getAllRule(argument: _core_RequestEmpty, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_rule_RulesResponse__Output>): grpc.ClientUnaryCall;
+  getAllRule(argument: _core_RequestEmpty, metadata: grpc.Metadata, callback: grpc.requestCallback<_rule_RulesResponse__Output>): grpc.ClientUnaryCall;
+  getAllRule(argument: _core_RequestEmpty, options: grpc.CallOptions, callback: grpc.requestCallback<_rule_RulesResponse__Output>): grpc.ClientUnaryCall;
+  getAllRule(argument: _core_RequestEmpty, callback: grpc.requestCallback<_rule_RulesResponse__Output>): grpc.ClientUnaryCall;
   
   GetAllSubMajors(argument: _core_RequestEmpty, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_sub_major_SubMajorssResponse__Output>): grpc.ClientUnaryCall;
   GetAllSubMajors(argument: _core_RequestEmpty, metadata: grpc.Metadata, callback: grpc.requestCallback<_sub_major_SubMajorssResponse__Output>): grpc.ClientUnaryCall;
@@ -330,6 +361,15 @@ export interface CoreClient extends grpc.Client {
   updateModule(argument: _module_UpdateModule, options: grpc.CallOptions, callback: grpc.requestCallback<_module_ModuleResponse__Output>): grpc.ClientUnaryCall;
   updateModule(argument: _module_UpdateModule, callback: grpc.requestCallback<_module_ModuleResponse__Output>): grpc.ClientUnaryCall;
   
+  UpdateRule(argument: _rule_UpdateRule, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_rule_RuleResponse__Output>): grpc.ClientUnaryCall;
+  UpdateRule(argument: _rule_UpdateRule, metadata: grpc.Metadata, callback: grpc.requestCallback<_rule_RuleResponse__Output>): grpc.ClientUnaryCall;
+  UpdateRule(argument: _rule_UpdateRule, options: grpc.CallOptions, callback: grpc.requestCallback<_rule_RuleResponse__Output>): grpc.ClientUnaryCall;
+  UpdateRule(argument: _rule_UpdateRule, callback: grpc.requestCallback<_rule_RuleResponse__Output>): grpc.ClientUnaryCall;
+  updateRule(argument: _rule_UpdateRule, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_rule_RuleResponse__Output>): grpc.ClientUnaryCall;
+  updateRule(argument: _rule_UpdateRule, metadata: grpc.Metadata, callback: grpc.requestCallback<_rule_RuleResponse__Output>): grpc.ClientUnaryCall;
+  updateRule(argument: _rule_UpdateRule, options: grpc.CallOptions, callback: grpc.requestCallback<_rule_RuleResponse__Output>): grpc.ClientUnaryCall;
+  updateRule(argument: _rule_UpdateRule, callback: grpc.requestCallback<_rule_RuleResponse__Output>): grpc.ClientUnaryCall;
+  
   UpdateSubMajor(argument: _sub_major_UpdateSubMajors, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_sub_major_SubMajorsResponse__Output>): grpc.ClientUnaryCall;
   UpdateSubMajor(argument: _sub_major_UpdateSubMajors, metadata: grpc.Metadata, callback: grpc.requestCallback<_sub_major_SubMajorsResponse__Output>): grpc.ClientUnaryCall;
   UpdateSubMajor(argument: _sub_major_UpdateSubMajors, options: grpc.CallOptions, callback: grpc.requestCallback<_sub_major_SubMajorsResponse__Output>): grpc.ClientUnaryCall;
@@ -368,6 +408,8 @@ export interface CoreHandlers extends grpc.UntypedServiceImplementation {
   
   CreateModule: grpc.handleUnaryCall<_module_Module__Output, _module_ModuleResponse>;
   
+  CreateRule: grpc.handleUnaryCall<_rule_Rule__Output, _rule_RuleResponse>;
+  
   CreateSubMajor: grpc.handleUnaryCall<_sub_major_SubMajors__Output, _sub_major_SubMajorsResponse>;
   
   CreateSubject: grpc.handleUnaryCall<_subject_Subject__Output, _subject_SubjectResponse>;
@@ -384,6 +426,8 @@ export interface CoreHandlers extends grpc.UntypedServiceImplementation {
   
   DeleteModule: grpc.handleUnaryCall<_core_Target__Output, _core_Message>;
   
+  DeleteRule: grpc.handleUnaryCall<_core_Target__Output, _core_Message>;
+  
   DeleteSubMajor: grpc.handleUnaryCall<_core_Target__Output, _core_Message>;
   
   DeleteSubject: grpc.handleUnaryCall<_core_Target__Output, _core_Message>;
@@ -397,6 +441,8 @@ export interface CoreHandlers extends grpc.UntypedServiceImplementation {
   GetAllMemberSchool: grpc.handleUnaryCall<_core_RequestEmpty__Output, _member_school_MemberSchoolsResponse>;
   
   GetAllModule: grpc.handleUnaryCall<_core_RequestEmpty__Output, _module_ModulesResponse>;
+  
+  GetAllRule: grpc.handleUnaryCall<_core_RequestEmpty__Output, _rule_RulesResponse>;
   
   GetAllSubMajors: grpc.handleUnaryCall<_core_RequestEmpty__Output, _sub_major_SubMajorssResponse>;
   
@@ -424,6 +470,8 @@ export interface CoreHandlers extends grpc.UntypedServiceImplementation {
   
   UpdateModule: grpc.handleUnaryCall<_module_UpdateModule__Output, _module_ModuleResponse>;
   
+  UpdateRule: grpc.handleUnaryCall<_rule_UpdateRule__Output, _rule_RuleResponse>;
+  
   UpdateSubMajor: grpc.handleUnaryCall<_sub_major_UpdateSubMajors__Output, _sub_major_SubMajorsResponse>;
   
   UpdateSubject: grpc.handleUnaryCall<_subject_UpdateSubject__Output, _subject_SubjectResponse>;
@@ -437,6 +485,7 @@ export interface CoreDefinition extends grpc.ServiceDefinition {
   CreateMajor: MethodDefinition<_majors_Majors, _majors_MajorsResponse, _majors_Majors__Output, _majors_MajorsResponse__Output>
   CreateMemberSchool: MethodDefinition<_member_school_MemberSchool, _member_school_MemberSchoolResponse, _member_school_MemberSchool__Output, _member_school_MemberSchoolResponse__Output>
   CreateModule: MethodDefinition<_module_Module, _module_ModuleResponse, _module_Module__Output, _module_ModuleResponse__Output>
+  CreateRule: MethodDefinition<_rule_Rule, _rule_RuleResponse, _rule_Rule__Output, _rule_RuleResponse__Output>
   CreateSubMajor: MethodDefinition<_sub_major_SubMajors, _sub_major_SubMajorsResponse, _sub_major_SubMajors__Output, _sub_major_SubMajorsResponse__Output>
   CreateSubject: MethodDefinition<_subject_Subject, _subject_SubjectResponse, _subject_Subject__Output, _subject_SubjectResponse__Output>
   CreateSubjectBlock: MethodDefinition<_subject_block_SubjectBlock, _subject_block_SubjectBlockResponse, _subject_block_SubjectBlock__Output, _subject_block_SubjectBlockResponse__Output>
@@ -445,6 +494,7 @@ export interface CoreDefinition extends grpc.ServiceDefinition {
   DeleteMajor: MethodDefinition<_core_Target, _core_Message, _core_Target__Output, _core_Message__Output>
   DeleteMemberSchool: MethodDefinition<_core_Target, _core_Message, _core_Target__Output, _core_Message__Output>
   DeleteModule: MethodDefinition<_core_Target, _core_Message, _core_Target__Output, _core_Message__Output>
+  DeleteRule: MethodDefinition<_core_Target, _core_Message, _core_Target__Output, _core_Message__Output>
   DeleteSubMajor: MethodDefinition<_core_Target, _core_Message, _core_Target__Output, _core_Message__Output>
   DeleteSubject: MethodDefinition<_core_Target, _core_Message, _core_Target__Output, _core_Message__Output>
   DeleteSubjectBlock: MethodDefinition<_core_Target, _core_Message, _core_Target__Output, _core_Message__Output>
@@ -452,6 +502,7 @@ export interface CoreDefinition extends grpc.ServiceDefinition {
   GetAllMajors: MethodDefinition<_core_RequestEmpty, _majors_MajorssResponse, _core_RequestEmpty__Output, _majors_MajorssResponse__Output>
   GetAllMemberSchool: MethodDefinition<_core_RequestEmpty, _member_school_MemberSchoolsResponse, _core_RequestEmpty__Output, _member_school_MemberSchoolsResponse__Output>
   GetAllModule: MethodDefinition<_core_RequestEmpty, _module_ModulesResponse, _core_RequestEmpty__Output, _module_ModulesResponse__Output>
+  GetAllRule: MethodDefinition<_core_RequestEmpty, _rule_RulesResponse, _core_RequestEmpty__Output, _rule_RulesResponse__Output>
   GetAllSubMajors: MethodDefinition<_core_RequestEmpty, _sub_major_SubMajorssResponse, _core_RequestEmpty__Output, _sub_major_SubMajorssResponse__Output>
   GetAllSubject: MethodDefinition<_core_RequestEmpty, _subject_SubjectsResponse, _core_RequestEmpty__Output, _subject_SubjectsResponse__Output>
   GetAllSubjectBlock: MethodDefinition<_core_RequestEmpty, _subject_block_SubjectBlocksResponse, _core_RequestEmpty__Output, _subject_block_SubjectBlocksResponse__Output>
@@ -465,6 +516,7 @@ export interface CoreDefinition extends grpc.ServiceDefinition {
   UpdateMajor: MethodDefinition<_majors_UpdateMajors, _majors_MajorsResponse, _majors_UpdateMajors__Output, _majors_MajorsResponse__Output>
   UpdateMemberSchool: MethodDefinition<_member_school_UpdateMemberSchool, _member_school_MemberSchoolResponse, _member_school_UpdateMemberSchool__Output, _member_school_MemberSchoolResponse__Output>
   UpdateModule: MethodDefinition<_module_UpdateModule, _module_ModuleResponse, _module_UpdateModule__Output, _module_ModuleResponse__Output>
+  UpdateRule: MethodDefinition<_rule_UpdateRule, _rule_RuleResponse, _rule_UpdateRule__Output, _rule_RuleResponse__Output>
   UpdateSubMajor: MethodDefinition<_sub_major_UpdateSubMajors, _sub_major_SubMajorsResponse, _sub_major_UpdateSubMajors__Output, _sub_major_SubMajorsResponse__Output>
   UpdateSubject: MethodDefinition<_subject_UpdateSubject, _subject_SubjectResponse, _subject_UpdateSubject__Output, _subject_SubjectResponse__Output>
   UpdateSubjectBlock: MethodDefinition<_subject_block_UpdateSubjectBlock, _subject_block_SubjectBlockResponse, _subject_block_UpdateSubjectBlock__Output, _subject_block_SubjectBlockResponse__Output>
