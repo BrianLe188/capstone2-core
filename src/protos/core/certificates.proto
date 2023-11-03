@@ -1,0 +1,31 @@
+syntax = 'proto3';
+
+package certificate;
+
+message Certificate {
+  optional string id = 1;
+  string name = 2;
+}
+
+message Certificates {
+  repeated Certificate data = 1;
+}
+
+message UpdateCertificate {
+  string id = 1;
+  Certificate body = 2;
+}
+
+message CertificateResponse {
+  oneof response {
+    Certificate certificate = 1;
+    string error = 2;
+  }
+}
+
+message CertificatesResponse {
+  oneof response {
+    Certificates certificates = 1;
+    string error = 2;
+  }
+}

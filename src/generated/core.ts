@@ -8,6 +8,13 @@ type SubtypeConstructor<Constructor extends new (...args: any) => any, Subtype> 
 };
 
 export interface ProtoGrpcType {
+  certificate: {
+    Certificate: MessageTypeDefinition
+    CertificateResponse: MessageTypeDefinition
+    Certificates: MessageTypeDefinition
+    CertificatesResponse: MessageTypeDefinition
+    UpdateCertificate: MessageTypeDefinition
+  }
   core: {
     Core: SubtypeConstructor<typeof grpc.Client, _core_CoreClient> & { service: _core_CoreDefinition }
     GreetRequest: MessageTypeDefinition
@@ -57,7 +64,7 @@ export interface ProtoGrpcType {
     UpdateRule: MessageTypeDefinition
   }
   sub_major: {
-    SubMajorWithMajor: MessageTypeDefinition
+    SubMajorWithMajorAndCertificates: MessageTypeDefinition
     SubMajors: MessageTypeDefinition
     SubMajorsResponse: MessageTypeDefinition
     SubMajorss: MessageTypeDefinition

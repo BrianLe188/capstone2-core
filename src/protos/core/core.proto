@@ -10,6 +10,7 @@ import './subject-block.proto';
 import './file.proto';
 import './sub-majors.proto';
 import './rule.proto';
+import './certificates.proto';
 
 service Core {
   rpc Default(GreetRequest) returns (GreetResponse) {}
@@ -59,6 +60,11 @@ service Core {
   rpc UpdateRule(rule.UpdateRule) returns (rule.RuleResponse) {}
   rpc DeleteRule(Target) returns (Message) {}
   rpc GetAllRule(RequestEmpty) returns (rule.RulesResponse) {}
+
+  rpc CreateCertificate(certificate.Certificate) returns (certificate.CertificateResponse) {}
+  rpc UpdateCertificate(certificate.UpdateCertificate) returns (certificate.CertificateResponse) {}
+  rpc DeleteCertificate(Target) returns (Message) {}
+  rpc GetAllCertificate(RequestEmpty) returns (certificate.CertificatesResponse) {}
 }
 
 message Target {

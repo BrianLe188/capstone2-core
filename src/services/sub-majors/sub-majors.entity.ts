@@ -2,10 +2,13 @@ import {
   Column,
   Entity,
   JoinColumn,
+  JoinTable,
+  ManyToMany,
   ManyToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
 import { Majors } from "../majors/majors.entity";
+import { Certificate } from "../certificates/certificates.entity";
 
 @Entity({ name: "sub_majors" })
 export class SubMajors {
@@ -33,4 +36,8 @@ export class SubMajors {
 
   @Column({ type: "integer" })
   admissionCriteria: number;
+
+  @ManyToMany(() => Certificate, (certificate) => certificate.subMajors)
+  @JoinTable()
+  graduationRequirements: Certificate[];
 }

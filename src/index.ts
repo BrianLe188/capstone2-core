@@ -19,6 +19,7 @@ import subjectBlockRPC from "./services/subject-blocks/subject-blocks.rpc";
 import fileRPC from "./services/files/files.rpc";
 import submajorsRPC from "./services/sub-majors/sub-majors.rpc";
 import ruleRPC from "./services/rules/rules.rpc";
+import certificateRPC from "./services/certificates/certificates.rpc";
 import amqp from "amqplib";
 import ai from "./queue/ai";
 
@@ -43,6 +44,7 @@ async function main() {
     ...fileRPC,
     ...submajorsRPC,
     ...ruleRPC,
+    ...certificateRPC,
   });
   if (process.env.CORE_GRPC) {
     server.bindAsync(

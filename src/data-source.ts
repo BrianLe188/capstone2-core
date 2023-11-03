@@ -7,6 +7,7 @@ import { SubjectBlock } from "./services/subject-blocks/subject-blocks.entity";
 import { Files } from "./services/files/files.entity";
 import { SubMajors } from "./services/sub-majors/sub-majors.entity";
 import { Rule } from "./services/rules/rules.entity";
+import { Certificate } from "./services/certificates/certificates.entity";
 
 export const CoreDB = new DataSource({
   type: process.env.DB_TYPE,
@@ -26,6 +27,7 @@ export const CoreDB = new DataSource({
     Files,
     SubMajors,
     Rule,
+    Certificate,
   ],
   subscribers: [],
   migrations: [],

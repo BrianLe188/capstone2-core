@@ -1,9 +1,12 @@
+import { In } from "typeorm";
 import { CoreDB } from "../../data-source";
+import { Certificate } from "../certificates/certificates.entity";
 import { Majors } from "../majors/majors.entity";
 import { SubMajors } from "./sub-majors.entity";
 
 const subMajorsRepo = CoreDB.getRepository(SubMajors);
 const majorRepo = CoreDB.getRepository(Majors);
+const certificateRepo = CoreDB.getRepository(Certificate);
 
 const ImportSubMajor = async (call: any, callback: any) => {
   try {
@@ -26,6 +29,7 @@ const GetAllSubMajors = async (call: any, callback: any) => {
     const submajors = await subMajorsRepo.find({
       relations: {
         major: true,
+        graduationRequirements: true,
       },
     });
     callback(null, {
@@ -39,7 +43,7 @@ const GetAllSubMajors = async (call: any, callback: any) => {
 const CreateSubMajor = async (call: any, callback: any) => {
   try {
     const submajor: any = new SubMajors();
-    const { majorId, ...rest } = call.request;
+    const { majorId, graduationRequirements, ...rest } = call.request;
     Object.keys(rest).forEach((item) => {
       submajor[item] = rest[item];
     });
@@ -50,6 +54,16 @@ const CreateSubMajor = async (call: any, callback: any) => {
     });
     if (major) {
       submajor.major = major;
+    }
+    if (
+      Array.isArray(graduationRequirements) &&
+      graduationRequirements.length > 0
+    ) {
+      submajor.graduationRequirements = await certificateRepo.find({
+        where: {
+          id: In([...graduationRequirements]),
+        },
+      });
     }
     await subMajorsRepo.save(submajor);
     callback(null, { submajor });
@@ -63,7 +77,7 @@ const UpdateSubMajor = async (call: any, callback: any) => {
       id,
     });
     if (updatedSubMajor) {
-      const { majorId, ...rest } = body;
+      const { majorId, graduationRequirements, ...rest } = body;
       Object.keys(rest).forEach((item) => {
         updatedSubMajor[item] = rest[item];
       });
@@ -74,6 +88,16 @@ const UpdateSubMajor = async (call: any, callback: any) => {
       });
       if (major) {
         updatedSubMajor.major = major;
+      }
+      if (
+        Array.isArray(graduationRequirements) &&
+        graduationRequirements.length > 0
+      ) {
+        updatedSubMajor.graduationRequirements = await certificateRepo.find({
+          where: {
+            id: In([...graduationRequirements]),
+          },
+        });
       }
       await subMajorsRepo.save(updatedSubMajor);
       callback(null, { submajor: updatedSubMajor });

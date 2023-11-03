@@ -12,6 +12,7 @@ export interface SubMajorWithMajor {
   'tuition'?: (number);
   'cutoffPoint'?: (number | string);
   'admissionCriteria'?: (number);
+  'graduationRequirements'?: (string)[];
   '_id'?: "id";
   '_description'?: "description";
   '_majorId'?: "majorId";
@@ -31,6 +32,7 @@ export interface SubMajorWithMajor__Output {
   'tuition'?: (number);
   'cutoffPoint'?: (number);
   'admissionCriteria'?: (number);
+  'graduationRequirements': (string)[];
   '_id': "id";
   '_description': "description";
   '_majorId': "majorId";
